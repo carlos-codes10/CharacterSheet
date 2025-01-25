@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class CharacterSheet : MonoBehaviour
 {
-    [SerializeField] string charname;
-    [SerializeField] int probonus;
-    [SerializeField] bool FinWeapon;
+    [SerializeField] string CharacterName;
+    [SerializeField] int ProficiencyBonus;
+    [SerializeField] bool FinesseWeapon;
     [SerializeField] [Range(-5, 5)] int Strength;
     [SerializeField] [Range(-5, 5)] int Dexterity;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -16,24 +16,24 @@ public class CharacterSheet : MonoBehaviour
         int HitMod;
 
         if (Strength > Dexterity) {
-            HitMod = (Strength + probonus);
+            HitMod = (Strength + ProficiencyBonus);
         }
         else {
-            HitMod = (Dexterity + probonus);
+            HitMod = (Dexterity + ProficiencyBonus);
         }
 
         if (HitMod > 0) {
-            Debug.Log(charname + " hit modifier is +" + HitMod);
+            Debug.Log(CharacterName + " hit modifier is +" + HitMod);
         }
         else {
-            Debug.Log(charname + " hit modifier is " + HitMod);
+            Debug.Log(CharacterName + " hit modifier is " + HitMod);
         }
 
         int AC = Random.Range(10, 21);
         Debug.Log("Enemy AC is " + AC);
 
         int D20 = Random.Range(1, 21);
-        Debug.Log(charname +  " rolled " +  D20);
+        Debug.Log(CharacterName +  " rolled " +  D20);
 
         int TotalDamage = (D20 + HitMod);
 
